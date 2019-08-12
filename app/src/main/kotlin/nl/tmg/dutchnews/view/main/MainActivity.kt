@@ -1,11 +1,11 @@
 package nl.tmg.dutchnews.view.main
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import nl.tmg.dutchnews.R
+import nl.tmg.dutchnews.view.BaseInjectionActivity
 import nl.tmg.dutchnews.view.main.fragments.MainFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseInjectionActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

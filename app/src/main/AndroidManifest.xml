@@ -2,14 +2,16 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="nl.tmg.dutchnews">
 
-    <application android:allowBackup="false"
-                 android:label="@string/app_name"
-                 android:icon="@mipmap/ic_launcher"
-                 android:roundIcon="@mipmap/ic_launcher_round"
-                 android:supportsRtl="true"
-                 android:theme="@style/AppTheme"
-                 android:fullBackupContent="false"
-                 tools:ignore="GoogleAppIndexingWarning">
+    <application
+            android:name=".DutchNewsApp"
+            android:allowBackup="false"
+            android:label="@string/app_name"
+            android:icon="@mipmap/ic_launcher"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme"
+            android:fullBackupContent="false"
+            tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".view.main.MainActivity">
 
             <intent-filter>
