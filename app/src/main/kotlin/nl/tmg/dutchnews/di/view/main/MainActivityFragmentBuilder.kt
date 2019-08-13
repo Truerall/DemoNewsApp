@@ -1,4 +1,4 @@
-package nl.tmg.dutchnews.di.ui.main
+package nl.tmg.dutchnews.di.view.main
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -10,6 +10,6 @@ abstract class MainActivityFragmentBuilder {
 
     @FragmentScope
     @ContributesAndroidInjector(modules = [])
-    abstract fun bindTransactionsListFragment(): MainFragment
+    abstract fun bindMainFragment(): MainFragment
 
 }

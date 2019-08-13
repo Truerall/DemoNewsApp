@@ -31,7 +31,7 @@ class DutchNewsAppProviderModule {
 
     @Provides
     @Singleton
-    internal fun provideUsersApiService(apiClient: Retrofit): NewsApiService {
+    internal fun provideNewsApiService(apiClient: Retrofit): NewsApiService {
         return apiClient.create(NewsApiService::class.java)
     }
 
