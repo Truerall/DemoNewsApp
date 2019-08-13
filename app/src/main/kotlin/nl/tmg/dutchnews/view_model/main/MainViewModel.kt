@@ -21,8 +21,9 @@ class MainViewModel @Inject constructor(private val apiService: NewsApiService) 
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
-                onComplete = {
-                    Log.d("DutchNews", "check retrofit logs")
+                onSuccess = {
+                    Log.d("DutchNews", "some data > ${it.articles[0].description }")
+                    Log.d("DutchNews", "some data > ${it.articles[0].publishedAt }")
                 },
                 onError = {
                     Log.d("DutchNews", "WOW! thats error. check logs")

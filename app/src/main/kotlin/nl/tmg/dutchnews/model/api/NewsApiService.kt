@@ -1,6 +1,7 @@
 package nl.tmg.dutchnews.model.api
 
-import io.reactivex.Completable
+import io.reactivex.Single
+import nl.tmg.dutchnews.model.api.responses.ResponseGetTopHeadlines
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -10,5 +11,5 @@ interface NewsApiService {
     fun getTopHeadlines(
         @Query(Constants.PAGE_SIZE) pageSize: Int = 20,
         @Query(Constants.COUNTRY) country: String = "nl"
-    ): Completable// no return value for test purposes. We will parse the response later
+    ): Single<ResponseGetTopHeadlines>
 }
