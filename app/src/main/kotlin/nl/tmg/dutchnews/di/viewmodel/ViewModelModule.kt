@@ -10,7 +10,7 @@ import nl.tmg.dutchnews.view_model.main.MainViewModel
 @Module
 abstract class ViewModelModule {
     @Binds
-    internal abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
+    abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 
     @Binds
     @IntoMap
