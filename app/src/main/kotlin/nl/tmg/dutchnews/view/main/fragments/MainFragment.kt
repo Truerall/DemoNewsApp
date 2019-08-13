@@ -1,7 +1,6 @@
 package nl.tmg.dutchnews.view.main.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +24,6 @@ class MainFragment : BaseVMFragment<MainViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("DutchNews", "MainViewModel testProperty>> ${viewModel.testProperty}")
+        viewModel.getTopHeaders()
     }
 }

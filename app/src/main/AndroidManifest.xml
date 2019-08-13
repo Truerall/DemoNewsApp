@@ -2,6 +2,8 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="nl.tmg.dutchnews">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
             android:name=".DutchNewsApp"
             android:allowBackup="false"
