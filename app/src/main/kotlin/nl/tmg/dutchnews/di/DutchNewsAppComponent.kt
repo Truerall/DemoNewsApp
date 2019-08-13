@@ -15,7 +15,6 @@ import javax.inject.Singleton
         ActivityBuilder::class,
         DutchNewsAppProviderModule::class,
         DutchNewsAppBindingModule::class,
-        DutchNewsRepositoryBindingModule::class,
         ViewModelModule::class]
 )
 interface DutchNewsAppComponent {

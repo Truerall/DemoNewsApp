@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Dutch News</string>
+    <string name="app_api_key">56752754107e4f3296007fab3c842a3f</string>
 </resources>
