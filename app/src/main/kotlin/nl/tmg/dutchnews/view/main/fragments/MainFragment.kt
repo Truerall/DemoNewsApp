@@ -29,7 +29,9 @@ class MainFragment : BaseVMFragment<MainViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.getTopHeaders(adapter.itemCount)
+        if (savedInstanceState == null) {
+            viewModel.getTopHeaders(adapter.itemCount)
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
