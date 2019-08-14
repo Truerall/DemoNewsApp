@@ -31,6 +31,11 @@ class MainFragment : BaseVMFragment<MainViewModel>() {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
             viewModel.getTopHeaders(adapter.itemCount)
+            adapter.onItemClick = {
+                view?.let {
+                    Snackbar.make(it, "Not implemented. Give me +1 day please.", Snackbar.LENGTH_LONG).show()
+                }
+            }
         }
     }
 

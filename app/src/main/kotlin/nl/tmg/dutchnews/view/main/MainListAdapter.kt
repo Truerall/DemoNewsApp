@@ -7,16 +7,21 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_article.view.*
-import nl.tmg.dutchnews.R
 import nl.tmg.dutchnews.model.data_models.Article
+
 
 class MainListAdapter(private val context: Context) : RecyclerView.Adapter<ViewHolder>() {
 
     private var dataSet: MutableList<Article> = mutableListOf()
     //TODO date per item //private val formatter = DateFormat.getDateFormat(context)
+    lateinit var onItemClick: () -> Unit
+
+    private val onClickListener = View.OnClickListener {
+        onItemClick.invoke()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_article, parent, false))
+        return ViewHolder(LayoutInflater.from(context).inflate(nl.tmg.dutchnews.R.layout.item_article, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -24,9 +29,10 @@ class MainListAdapter(private val context: Context) : RecyclerView.Adapter<ViewH
         holder.tvDescription.text = dataSet[position].description
         Glide.with(holder.itemView.context)
             .load(dataSet[position].urlToImage)
-            .placeholder(R.drawable.ic_tmg_place_holder)
+            .placeholder(nl.tmg.dutchnews.R.drawable.ic_tmg_place_holder)
             .into(holder.ivImage)
         //formatter.format(dataSet[position].publishedAt)
+        holder.itemView.setOnClickListener(onClickListener)
     }
 
     // Gets the number of animals in the list
