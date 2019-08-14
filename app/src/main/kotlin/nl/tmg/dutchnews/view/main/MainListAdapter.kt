@@ -1,6 +1,7 @@
 package nl.tmg.dutchnews.view.main
 
 import android.content.Context
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +14,7 @@ import nl.tmg.dutchnews.model.data_models.Article
 class MainListAdapter(private val context: Context) : RecyclerView.Adapter<ViewHolder>() {
 
     private var dataSet: MutableList<Article> = mutableListOf()
-    //TODO date per item //private val formatter = DateFormat.getDateFormat(context)
+    private val formatter = DateFormat.getDateFormat(context)
     lateinit var onItemClick: () -> Unit
 
     private val onClickListener = View.OnClickListener {
@@ -31,7 +32,7 @@ class MainListAdapter(private val context: Context) : RecyclerView.Adapter<ViewH
             .load(dataSet[position].urlToImage)
             .placeholder(nl.tmg.dutchnews.R.drawable.ic_tmg_place_holder)
             .into(holder.ivImage)
-        //formatter.format(dataSet[position].publishedAt)
+        holder.tvDate.text = formatter.format(dataSet[position].publishedAt)
         holder.itemView.setOnClickListener(onClickListener)
     }
 
@@ -50,4 +51,5 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val ivImage = view.item_article_iv_image
     val tvTitle = view.item_article_tv_title
     val tvDescription = view.item_article_tv_description
+    val tvDate = view.item_article_tv_date
 }
