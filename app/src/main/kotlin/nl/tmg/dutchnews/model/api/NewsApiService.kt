@@ -9,7 +9,8 @@ interface NewsApiService {
 
     @GET("top-headlines")
     fun getTopHeadlines(
-        @Query(Constants.PAGE_SIZE) pageSize: Int = 20,
+        @Query(Constants.PAGE_SIZE) pageSize: Int = Constants.DEFAULT_PAGE_SIZE,
+        @Query(Constants.CURRENT_PAGE) page: Int,
         @Query(Constants.COUNTRY) country: String = "nl"
     ): Single<ResponseGetTopHeadlines>
 }

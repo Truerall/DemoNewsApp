@@ -15,7 +15,7 @@ import javax.inject.Inject
 interface IMainViewModelContract : IBaseViewModel {
     val errorEventLiveData: EventLiveData<String>
     val topHeadersLiveData: NonNullMutableLiveData<List<Article>>
-    fun getTopHeaders()
+    fun getTopHeaders(itemsCnt : Int)
 }
 
 class MainViewModel @Inject constructor(private val newsRepository: INewsRepository) : BaseViewModel(),
@@ -25,8 +25,8 @@ class MainViewModel @Inject constructor(private val newsRepository: INewsReposit
     override val topHeadersLiveData = NonNullMutableLiveData<List<Article>>()
 
 
-    override fun getTopHeaders() {
-        compositeDisposable += newsRepository.getTopHeadlines()
+    override fun getTopHeaders(itemsCnt : Int) {
+        compositeDisposable += newsRepository.getTopHeadlines(itemsCnt)
             .subscribeBy(
                 onSuccess = {
                     topHeadersLiveData.value = it

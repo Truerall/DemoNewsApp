@@ -12,7 +12,7 @@ import nl.tmg.dutchnews.model.data_models.Article
 
 class MainListAdapter(private val context: Context) : RecyclerView.Adapter<ViewHolder>() {
 
-    private var dataSet: List<Article> = listOf()
+    private var dataSet: MutableList<Article> = mutableListOf()
     //TODO date per item //private val formatter = DateFormat.getDateFormat(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,8 +34,8 @@ class MainListAdapter(private val context: Context) : RecyclerView.Adapter<ViewH
         return dataSet.size
     }
 
-    fun setData(newDataSet: List<Article>){
-        this.dataSet = newDataSet
+    fun setData(newDataSet: List<Article>) {
+        this.dataSet.addAll(newDataSet)
         notifyDataSetChanged()
     }
 }

@@ -11,12 +11,14 @@ import nl.tmg.dutchnews.R
 import nl.tmg.dutchnews.model.data_models.Article
 import nl.tmg.dutchnews.view.BaseVMFragment
 import nl.tmg.dutchnews.view.main.MainListAdapter
+import nl.tmg.dutchnews.view.main.adapter.PaginationScrollListener
 import nl.tmg.dutchnews.view_model.BaseViewModel
 import nl.tmg.dutchnews.view_model.main.MainViewModel
 
 class MainFragment : BaseVMFragment<MainViewModel>() {
 
     private val adapter by lazy { MainListAdapter(requireContext()) }
+    private lateinit var paginationScrollListener: PaginationScrollListener
 
     override val modelClass: Class<out BaseViewModel>
         get() = MainViewModel::class.java
@@ -27,7 +29,7 @@ class MainFragment : BaseVMFragment<MainViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.getTopHeaders()
+        viewModel.getTopHeaders(adapter.itemCount)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -38,17 +40,24 @@ class MainFragment : BaseVMFragment<MainViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        rv_main_list.layoutManager = LinearLayoutManager(requireContext())
+        val layoutManager = LinearLayoutManager(requireContext())
+        rv_main_list.layoutManager = layoutManager
         rv_main_list.adapter = adapter
+        paginationScrollListener = PaginationScrollListener(layoutManager) {
+            viewModel.getTopHeaders(adapter.itemCount)
+        }
+        rv_main_list.addOnScrollListener(paginationScrollListener)
     }
 
     private fun displayData(issuesList: List<Article>) {
         adapter.setData(issuesList)
+        paginationScrollListener.isLoading = false
     }
 
     private fun handleError(errorMessage: String) {
         view?.let {
             Snackbar.make(it, errorMessage, Snackbar.LENGTH_LONG).show()
+            paginationScrollListener.isLoading = false
         }
     }
 }

@@ -5,5 +5,5 @@ import nl.tmg.dutchnews.model.data_models.Article
 
 interface INewsRepository {
     val topHeadlinesCnt: Int
-    fun getTopHeadlines(): Single<List<Article>>
+    fun getTopHeadlines(itemsCnt: Int): Single<List<Article>>
 }
