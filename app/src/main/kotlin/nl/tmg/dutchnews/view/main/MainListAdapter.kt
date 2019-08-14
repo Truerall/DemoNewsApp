@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_article.view.*
 import nl.tmg.dutchnews.R
 import nl.tmg.dutchnews.model.data_models.Article
@@ -21,6 +22,10 @@ class MainListAdapter(private val context: Context) : RecyclerView.Adapter<ViewH
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.tvTitle.text = dataSet[position].title
         holder.tvDescription.text = dataSet[position].description
+        Glide.with(holder.itemView.context)
+            .load(dataSet[position].urlToImage)
+            .placeholder(R.drawable.ic_tmg_place_holder)
+            .into(holder.ivImage)
         //formatter.format(dataSet[position].publishedAt)
     }
 
