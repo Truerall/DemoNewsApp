@@ -5,6 +5,7 @@ object ResourcesFolders {
 
     val dirs = arrayListOf(
         "src/main/res-screens/main",
-        "src/main/res-screens/main/fragments"
+        "src/main/res-screens/main/fragments",
+        "src/main/res-screens/main/items"
     )
 }
