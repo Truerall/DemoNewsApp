@@ -22,7 +22,7 @@
                 android:id="@+id/item_article_iv_image"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:src="@drawable/ic_tmg_place_holder"
+                card_view:srcCompat="@drawable/ic_news_place_holder"
                 android:layout_width="@dimen/row_triple_line_img_width"
                 android:layout_height="@dimen/row_triple_line_img_height"/>
 

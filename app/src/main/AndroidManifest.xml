@@ -1,11 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
-          package="nl.tmg.dutchnews">
+          package="ok.demo.news">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-            android:name=".DutchNewsApp"
+            android:name="ok.demo.news.DemoNewsApp"
             android:allowBackup="false"
             android:label="@string/app_name"
             android:icon="@mipmap/ic_launcher"
@@ -14,7 +14,7 @@
             android:theme="@style/AppTheme"
             android:fullBackupContent="false"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.main.MainActivity">
+        <activity android:name="ok.demo.news.view.main.MainActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
