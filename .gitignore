@@ -1,3 +1,17 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+
 # Built application files
 *.apk
 *.ap_
@@ -52,14 +66,51 @@ captures/
 # Google Services (e.g. APIs or Firebase)
 google-services.json
 
-# Freeline
-freeline.py
-freeline/
-freeline_project_description.json
 
-# fastlane
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots
-fastlane/test_output
-fastlane/readme.md
+# Ignore OS generated files and coommons #
+##########################################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+*.tmp
+*.log
+*.swp
+tmp
+null
+*~
+
+
+# GIT specific #
+################
+!.gitkeep
+
+
+# Ignore IDE and build tools
+##############################
+.idea/
+*.iml
+.gradle/
+.settings
+.classpath
+.project
+
+
+# Project specific ignores #
+############################
+build/
+target/
+out/
+bin/
+gen/
+gen-annotation-processor/
+gradle-app.setting
+local.properties
+
+# Keep these files #
+####################
+# The code inspection settings should be the same for everyone
+!.idea/inspectionProfiles/
+!.idea/scopes/
+*.exec
+app/class_files.txt
