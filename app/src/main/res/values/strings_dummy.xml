@@ -1,0 +1,9 @@
+<resources>
+    <string name="dm_frg_main_item_article_title">[Interesting title]</string>
+    <string name="dm_frg_main_item_article_description">[Click baiting description. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.]</string>
+    <string name="dm_frg_main_item_article_date">[29/09/2019]</string>
+    <!-- state layout -->
+
+    <string name="dummy_error_message">[Terrible error. Terrifying message describing error.]</string>
+
+</resources>
