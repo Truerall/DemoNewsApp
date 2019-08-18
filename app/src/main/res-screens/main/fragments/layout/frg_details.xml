@@ -23,6 +23,7 @@
                     android:layout_height="@dimen/collapsing_toolbar_image_height"/>
 
             <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"/>
 

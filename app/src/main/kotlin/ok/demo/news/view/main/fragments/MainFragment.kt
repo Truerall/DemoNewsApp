@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.frg_details.*
 import kotlinx.android.synthetic.main.frg_main.*
+import kotlinx.android.synthetic.main.frg_main.toolbar
 import ok.demo.news.R
 import ok.demo.news.model.data_models.Article
 import ok.demo.news.view.BaseVMFragment
@@ -46,6 +49,10 @@ class MainFragment : BaseVMFragment<MainViewModel, MainRouter>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
+        (requireActivity() as AppCompatActivity).supportActionBar?.setIcon(R.drawable.ic_news_place_holder_white)
+        (requireActivity() as AppCompatActivity).supportActionBar?.setHomeButtonEnabled(true)
+
         val layoutManager = LinearLayoutManager(requireContext())
         rv_main_list.layoutManager = layoutManager
         rv_main_list.adapter = adapter

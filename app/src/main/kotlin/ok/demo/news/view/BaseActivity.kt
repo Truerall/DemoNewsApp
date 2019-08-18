@@ -12,6 +12,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     protected fun addFragment(fragment: Fragment, tag: String, addToBackStack: Boolean) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
         fragmentTransaction.add(R.id.container, fragment, tag)
         if (addToBackStack) {
             fragmentTransaction.addToBackStack(tag)

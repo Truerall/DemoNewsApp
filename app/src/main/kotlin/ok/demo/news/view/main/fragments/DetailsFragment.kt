@@ -13,6 +13,7 @@ import ok.demo.news.view.main.MainRouter
 import ok.demo.news.view_model.BaseViewModel
 import ok.demo.news.view_model.main.MainViewModel
 
+
 class DetailsFragment : BaseVMFragment<MainViewModel, MainRouter>() {
 
     override val activityScope: ViewModelScope
@@ -35,9 +36,16 @@ class DetailsFragment : BaseVMFragment<MainViewModel, MainRouter>() {
         return inflater.inflate(R.layout.frg_details, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initToolbar()
+    }
+
     private fun displayArticleDetails(article: Article) {
         test_description.text = article.description
         test_data.text = article.content
         dbg("DisplayTriggered")
     }
+
+
 }
