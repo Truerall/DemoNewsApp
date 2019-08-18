@@ -31,11 +31,6 @@ class MainFragment : BaseVMFragment<MainViewModel>() {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
             viewModel.getTopHeaders(adapter.itemCount)
-            adapter.onItemClick = {
-                view?.let {
-                    Snackbar.make(it, "Not implemented. Give me +1 day please.", Snackbar.LENGTH_LONG).show()
-                }
-            }
         }
     }
 
@@ -50,10 +45,15 @@ class MainFragment : BaseVMFragment<MainViewModel>() {
         val layoutManager = LinearLayoutManager(requireContext())
         rv_main_list.layoutManager = layoutManager
         rv_main_list.adapter = adapter
+
         paginationScrollListener = PaginationScrollListener(layoutManager) {
             viewModel.getTopHeaders(adapter.itemCount)
         }
+
         rv_main_list.addOnScrollListener(paginationScrollListener)
+        adapter.onItemClick = {
+            Snackbar.make(view, "Not implemented. Give me +1 day please.", Snackbar.LENGTH_LONG).show()
+        }
     }
 
     private fun displayData(issuesList: List<Article>) {
