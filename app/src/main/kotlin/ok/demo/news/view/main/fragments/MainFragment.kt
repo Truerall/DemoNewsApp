@@ -57,6 +57,7 @@ class MainFragment : BaseVMFragment<MainViewModel, MainRouter>() {
         rv_main_list.addOnScrollListener(paginationScrollListener)
 
         adapter.onItemClick = {
+            viewModel.selectedArticle.value = it
             router.openDetailsFragment()
         }
     }
@@ -66,10 +67,8 @@ class MainFragment : BaseVMFragment<MainViewModel, MainRouter>() {
         paginationScrollListener.isLoading = false
     }
 
-    private fun handleError(errorMessage: String) {
-        view?.let {
-            Snackbar.make(it, errorMessage, Snackbar.LENGTH_LONG).show()
-            paginationScrollListener.isLoading = false
-        }
+    override fun handleError(errorMessage: String) {
+        super.handleError(errorMessage)
+        paginationScrollListener.isLoading = false
     }
 }

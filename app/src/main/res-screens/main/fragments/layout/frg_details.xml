@@ -1,22 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusable="true"
+        android:clickable="true"
         android:background="@android:color/white">
 
-    <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/selected_item"
-            android:layout_width="wrap_content"
+    <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                    app:srcCompat="@drawable/ic_news_place_holder"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/collapsing_toolbar_image_height"/>
+
+            <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"/>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="[dummy text]" />
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/test_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/test_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+    </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!--<androidx.recyclerview.widget.RecyclerView-->
+    <!--android:id="@+id/rv_details_list"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:paddingTop="8dp"-->
+    <!--android:clipToPadding="false"-->
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+    <!--tools:listitem="@layout/item_article"/>-->
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

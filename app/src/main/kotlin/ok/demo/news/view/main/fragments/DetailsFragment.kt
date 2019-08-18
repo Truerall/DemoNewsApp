@@ -4,8 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.frg_details.*
 import ok.demo.news.R
+import ok.demo.news.model.data_models.Article
 import ok.demo.news.utils.dbg
 import ok.demo.news.view.BaseVMFragment
 import ok.demo.news.view.main.MainRouter
@@ -26,23 +27,17 @@ class DetailsFragment : BaseVMFragment<MainViewModel, MainRouter>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (savedInstanceState == null) {
-
-        }
         dbg("Details Frg created")
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        viewModel.selectedArticle.observeNonNull(viewLifecycleOwner, this::displayArticleDetails)
         return inflater.inflate(R.layout.frg_details, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
-    private fun handleError(errorMessage: String) {
-        view?.let {
-            Snackbar.make(it, errorMessage, Snackbar.LENGTH_LONG).show()
-        }
+    private fun displayArticleDetails(article: Article) {
+        test_description.text = article.description
+        test_data.text = article.content
+        dbg("DisplayTriggered")
     }
 }

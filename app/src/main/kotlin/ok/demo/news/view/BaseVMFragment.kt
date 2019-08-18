@@ -2,6 +2,7 @@ package ok.demo.news.view
 
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.google.android.material.snackbar.Snackbar
 import ok.demo.news.view_model.BaseViewModel
 import ok.demo.news.view_model.IBaseViewModel
 import javax.inject.Inject
@@ -29,6 +30,12 @@ abstract class BaseVMFragment<T : IBaseViewModel, Router> : BaseInjectionFragmen
         return when (activityScope) {
             ViewModelScope.ACTIVITY -> ViewModelProviders.of(requireActivity(), viewModelFactory).get(modelClass) as T
             ViewModelScope.FRAGMENT -> ViewModelProviders.of(this, viewModelFactory).get(modelClass) as T
+        }
+    }
+
+    protected open fun handleError(errorMessage: String) {
+        view?.let {
+            Snackbar.make(it, errorMessage, Snackbar.LENGTH_LONG).show()
         }
     }
 

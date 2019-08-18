@@ -13,27 +13,16 @@ import ok.demo.news.model.data_models.Article
 
 class MainListAdapter(private val context: Context) : RecyclerView.Adapter<ViewHolder>() {
 
-    private var dataSet: MutableList<Article> = mutableListOf()
     private val formatter = DateFormat.getDateFormat(context)
-    lateinit var onItemClick: () -> Unit
-
-    private val onClickListener = View.OnClickListener {
-        onItemClick.invoke()
-    }
+    private var dataSet: MutableList<Article> = mutableListOf()
+    lateinit var onItemClick: (Article) -> Unit
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(ok.demo.news.R.layout.item_article, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tvTitle.text = dataSet[position].title
-        holder.tvDescription.text = dataSet[position].description
-        Glide.with(holder.itemView.context)
-            .load(dataSet[position].urlToImage)
-            .placeholder(ok.demo.news.R.drawable.ic_news_place_holder)
-            .into(holder.ivImage)
-        holder.tvDate.text = formatter.format(dataSet[position].publishedAt)
-        holder.itemView.setOnClickListener(onClickListener)
+        holder.bind(dataSet[position], onItemClick, formatter)
     }
 
     // Gets the number of animals in the list
@@ -47,9 +36,30 @@ class MainListAdapter(private val context: Context) : RecyclerView.Adapter<ViewH
     }
 }
 
-class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val ivImage = view.item_article_iv_image
-    val tvTitle = view.item_article_tv_title
-    val tvDescription = view.item_article_tv_description
-    val tvDate = view.item_article_tv_date
+class ViewHolder(val view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
+
+    private lateinit var onItemClick: (Article) -> Unit
+    private lateinit var item: Article
+
+    fun bind(
+        item: Article,
+        clickListener: (Article) -> Unit,
+        formatter: java.text.DateFormat
+    ) {
+        this.onItemClick = clickListener
+        this.item = item
+
+        view.item_article_tv_title.text = item.title
+        view.item_article_tv_description.text = item.description
+        Glide.with(view.context)
+            .load(item.urlToImage)
+            .placeholder(ok.demo.news.R.drawable.ic_news_place_holder)
+            .into(view.item_article_iv_image)
+        view.item_article_tv_date.text = formatter.format(item.publishedAt)
+        view.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View?) {
+        onItemClick.invoke(this.item)
+    }
 }
