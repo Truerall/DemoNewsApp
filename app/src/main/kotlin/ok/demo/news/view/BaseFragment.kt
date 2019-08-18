@@ -10,7 +10,6 @@ abstract class BaseFragment : Fragment() {
     protected fun initToolbar(){
         (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
         (requireActivity() as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        (requireActivity() as AppCompatActivity).supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp)
         toolbar.setNavigationOnClickListener {
             requireActivity().onBackPressed();
         }
