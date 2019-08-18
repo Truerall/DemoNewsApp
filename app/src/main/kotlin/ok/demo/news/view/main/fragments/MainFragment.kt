@@ -11,14 +11,15 @@ import ok.demo.news.R
 import ok.demo.news.model.data_models.Article
 import ok.demo.news.view.BaseVMFragment
 import ok.demo.news.view.main.MainListAdapter
+import ok.demo.news.view.main.MainRouter
 import ok.demo.news.view.main.adapter.PaginationScrollListener
 import ok.demo.news.view_model.BaseViewModel
 import ok.demo.news.view_model.main.MainViewModel
 
-class MainFragment : BaseVMFragment<MainViewModel>() {
+class MainFragment : BaseVMFragment<MainViewModel, MainRouter>() {
 
-    private val adapter by lazy { MainListAdapter(requireContext()) }
-    private lateinit var paginationScrollListener: PaginationScrollListener
+    override val activityScope: ViewModelScope
+        get() = ViewModelScope.ACTIVITY
 
     override val modelClass: Class<out BaseViewModel>
         get() = MainViewModel::class.java
@@ -26,6 +27,9 @@ class MainFragment : BaseVMFragment<MainViewModel>() {
     companion object {
         fun newInstance() = MainFragment()
     }
+
+    private val adapter by lazy { MainListAdapter(requireContext()) }
+    private lateinit var paginationScrollListener: PaginationScrollListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,13 +55,14 @@ class MainFragment : BaseVMFragment<MainViewModel>() {
         }
 
         rv_main_list.addOnScrollListener(paginationScrollListener)
+
         adapter.onItemClick = {
-            Snackbar.make(view, "Not implemented. Give me +1 day please.", Snackbar.LENGTH_LONG).show()
+            router.openDetailsFragment()
         }
     }
 
-    private fun displayData(issuesList: List<Article>) {
-        adapter.setData(issuesList)
+    private fun displayData(articlesList: List<Article>) {
+        adapter.setData(articlesList)
         paginationScrollListener.isLoading = false
     }
 
