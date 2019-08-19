@@ -26,7 +26,6 @@ class MainListAdapter(private val context: Context) : RecyclerView.Adapter<ViewH
         holder.bind(dataSet[position], onItemClick, formatter)
     }
 
-    // Gets the number of animals in the list
     override fun getItemCount(): Int {
         return dataSet.size
     }
