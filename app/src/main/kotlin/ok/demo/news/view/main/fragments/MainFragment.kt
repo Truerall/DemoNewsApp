@@ -6,14 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.frg_details.*
 import kotlinx.android.synthetic.main.frg_main.*
 import kotlinx.android.synthetic.main.frg_main.toolbar
 import ok.demo.news.R
 import ok.demo.news.model.data_models.Article
 import ok.demo.news.view.BaseVMFragment
-import ok.demo.news.view.main.MainListAdapter
+import ok.demo.news.view.main.adapter.MainListAdapter
 import ok.demo.news.view.main.MainRouter
 import ok.demo.news.view.main.adapter.PaginationScrollListener
 import ok.demo.news.view_model.BaseViewModel

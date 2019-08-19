@@ -10,6 +10,8 @@ import ok.demo.news.BuildConfig
 import ok.demo.news.R
 import ok.demo.news.model.api.Constants
 import ok.demo.news.model.api.NewsApiService
+import ok.demo.news.model.data_models.Article
+import ok.demo.news.model.data_models.ArticleJsonAdapter
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -25,11 +27,17 @@ class NewsAppProviderModule {
     @Provides
     @Singleton
     internal fun provideMoshi(): Moshi {
-        return Moshi.Builder()
+
+        val moshi = Moshi.Builder()
             .add(Date::class.java, Rfc3339DateJsonAdapter().nullSafe())
             .build()
-    }
 
+        val adapter = ArticleJsonAdapter(moshi).nullSafe()
+
+        return moshi.newBuilder()
+            .add(Article::class.java, adapter)
+            .build()
+    }
 
     @Provides
     @Singleton

@@ -8,27 +8,27 @@ import ok.demo.news.view_model.BaseViewModel
 
 const val defaultTag = "NewsApp"
 
-fun AppCompatActivity.dbg(message: String){
+fun AppCompatActivity.dbg(message: String) {
     if (BuildConfig.DEBUG) Log.d(defaultTag, message)
 }
 
-fun AppCompatActivity.dbgc(message: String){
+fun AppCompatActivity.dbgc(message: String) {
     if (BuildConfig.DEBUG) Log.d(this::class.java.simpleName, message)
 }
 
-fun Fragment.dbg(message: String){
+fun Fragment.dbg(message: String) {
     if (BuildConfig.DEBUG) Log.d(defaultTag, message)
 }
 
-fun Fragment.dbgc(message: String){
+fun Fragment.dbgc(message: String) {
     if (BuildConfig.DEBUG) Log.d(this::class.java.simpleName, message)
 }
 
-fun BaseViewModel.dbg(message: String){
+fun BaseViewModel.dbg(message: String) {
     if (BuildConfig.DEBUG) Log.d(defaultTag, message)
 }
 
-fun BaseViewModel.dbgc(message: String){
+fun BaseViewModel.dbgc(message: String) {
     if (BuildConfig.DEBUG) Log.d(this::class.java.simpleName, message)
 }
 

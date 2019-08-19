@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.frg_details.*
 import ok.demo.news.R
@@ -12,9 +13,10 @@ import ok.demo.news.model.data_models.Article
 import ok.demo.news.utils.dbg
 import ok.demo.news.view.BaseVMFragment
 import ok.demo.news.view.main.MainRouter
+import ok.demo.news.view.main.adapter.DetailsListAdapter
+import ok.demo.news.view.main.adapter.DetailsViewModel
 import ok.demo.news.view_model.BaseViewModel
 import ok.demo.news.view_model.main.MainViewModel
-
 
 class DetailsFragment : BaseVMFragment<MainViewModel, MainRouter>() {
 
@@ -28,10 +30,7 @@ class DetailsFragment : BaseVMFragment<MainViewModel, MainRouter>() {
         fun newInstance() = DetailsFragment()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        dbg("Details Frg created")
-    }
+    private val adapter by lazy { DetailsListAdapter(requireContext()) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         viewModel.selectedArticle.observeNonNull(viewLifecycleOwner, this::displayArticleDetails)
@@ -41,19 +40,20 @@ class DetailsFragment : BaseVMFragment<MainViewModel, MainRouter>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initToolbar()
+        rv_details_list.layoutManager = LinearLayoutManager(requireContext())
+        rv_details_list.adapter = adapter
     }
 
     private fun displayArticleDetails(article: Article) {
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = article.author
+        article.author?.let {
+            (requireActivity() as AppCompatActivity).supportActionBar?.title = it
+        }
+
         Glide.with(this)
             .load(article.urlToImage)
             .placeholder(R.drawable.ic_news_place_holder)
             .into(frg_details_iv_image)
-        test_description.text = article.description
-        test_data.text = article.content
-        test_data.text = getString(R.string.dm_frg_main_item_article_description_extra_long)
-        dbg("DisplayTriggered")
+
+        adapter.setData(DetailsViewModel.mapToViewModel(article, requireContext()))
     }
-
-
 }

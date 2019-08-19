@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">News App</string>
     <string name="app_api_key">56752754107e4f3296007fab3c842a3f</string>
+
+    <string name="author_unknown">Author unknown</string>
+    <!-- Details view model -->
+    <string name="dvm_header_description">"Description:"</string>
+    <string name="dvm_header_date">"Date:"</string>
+    <string name="dvm_header_url">"Link to source:"</string>
+    <string name="dvm_header_source">"Source:"</string>
+    <string name="dvm_header_content">"Content:"</string>
+
 </resources>

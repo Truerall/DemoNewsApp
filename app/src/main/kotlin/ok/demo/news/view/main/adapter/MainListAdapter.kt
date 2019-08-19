@@ -1,4 +1,4 @@
-package ok.demo.news.view.main
+package ok.demo.news.view.main.adapter
 
 import android.content.Context
 import android.text.format.DateFormat
@@ -19,7 +19,13 @@ class MainListAdapter(private val context: Context) : RecyclerView.Adapter<ViewH
     lateinit var onItemClick: (Article) -> Unit
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_article, parent, false))
+        return ViewHolder(
+            LayoutInflater.from(context).inflate(
+                R.layout.item_article,
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
