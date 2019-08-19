@@ -8,6 +8,7 @@ import ok.demo.news.model.repository.INewsRepository
 import ok.demo.news.utils.architecture.Event
 import ok.demo.news.utils.architecture.EventLiveData
 import ok.demo.news.utils.architecture.NonNullMutableLiveData
+import ok.demo.news.utils.dbg
 import ok.demo.news.view_model.BaseViewModel
 import ok.demo.news.view_model.IBaseViewModel
 import javax.inject.Inject
@@ -35,7 +36,6 @@ class MainViewModel @Inject constructor(private val newsRepository: INewsReposit
                     topHeadersLiveData.value = it
                 },
                 onError = {
-                    Log.d("NewsApp", "WOW! thats error. check logs")
                     errorEventLiveData.value = Event(it.message ?: "Unexpected error")
                 }
             )

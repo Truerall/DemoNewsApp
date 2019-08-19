@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.frg_details.*
 import ok.demo.news.R
 import ok.demo.news.model.data_models.Article
@@ -42,6 +44,11 @@ class DetailsFragment : BaseVMFragment<MainViewModel, MainRouter>() {
     }
 
     private fun displayArticleDetails(article: Article) {
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = article.author
+        Glide.with(this)
+            .load(article.urlToImage)
+            .placeholder(R.drawable.ic_news_place_holder)
+            .into(frg_details_iv_image)
         test_description.text = article.description
         test_data.text = article.content
         test_data.text = getString(R.string.dm_frg_main_item_article_description_extra_long)

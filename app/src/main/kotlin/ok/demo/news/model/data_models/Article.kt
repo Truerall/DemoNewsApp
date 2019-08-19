@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import java.util.*
 
 data class Article(
-    @field:Json(name = "author") val author: String,
+    @field:Json(name = "author") val author: String = "Author unknown",
     @field:Json(name = "content") val content: String,
     @field:Json(name = "description") val description: String,
     @field:Json(name = "publishedAt") val publishedAt: Date,
