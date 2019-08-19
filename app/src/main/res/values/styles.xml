@@ -16,7 +16,6 @@
     </style>
 
     <style name="App.Toolbar" parent="Widget.AppCompat.Toolbar">
-        <!--<item name="android:background">?attr/colorPrimary</item>-->
         <item name="titleTextColor">@android:color/white</item>
         <item name="actionMenuTextColor">@android:color/white</item>
     </style>
@@ -28,10 +27,6 @@
     <style name="Text.CollapsingToolbar.Collapsed" parent="TextAppearance.AppCompat.Title">
         <item name="android:textColor">@android:color/white</item>
     </style>
-
-
-    <!--app:expandedTitleTextAppearance="@style/TextAppearance.Design.CollapsingToolbar.Expanded"-->
-    <!--app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Title"-->
 
     <style name="TextListRowHeaderDescriptionSmall">
         <item name="android:textSize">12sp</item>
