@@ -44,6 +44,7 @@ class DetailsFragment : BaseVMFragment<MainViewModel, MainRouter>() {
     private fun displayArticleDetails(article: Article) {
         test_description.text = article.description
         test_data.text = article.content
+        test_data.text = getString(R.string.dm_frg_main_item_article_description_extra_long)
         dbg("DisplayTriggered")
     }
 
